@@ -1,0 +1,50 @@
+INSTALL ON LINUX
+sudo apt-get update
+sudo apt-get remove docker docker-engine docker.io
+sudo apt install docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+docker --version
+https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04
+
+INTALL ON WINDOWS
+1-instalei o "Docker Desktop for Windows". Download em https://docs.docker.com/docker-for-windows/install/
+2-Depois tive que isntalar isso: https://aka.ms/wsl2kernel
+
+### BASIC COMMANDS ###
+
+CHECK DOCKER VERSION
+docker version
+
+TEST DOCKER AFTER ISNTALLATION
+docker run hello-world
+
+START A CONTAINER
+docker run nomeContainer
+
+LIST CONTAINERS
+docker ps
+docker ps -a
+
+STOP A CONTAINER
+docker stop nomeContainer
+
+REMOVER A CONTAINER
+docker rm nomeContainer
+docker ps -a
+
+LIST IMAGE
+docker images
+
+REMOVE IMAGE
+docker rmi nomeImagem
+
+DOWNLOAD AN IMAGE
+docker run nomeImagem
+docker pull nomeImagem
+
+GET A BASH SHELL IN THE CONTAINER
+docker exec -it <container name> /bin/bash
+
+EXECUTE A COMMAND IN THE CONTAINER
+docker exec -it <container name> <command>

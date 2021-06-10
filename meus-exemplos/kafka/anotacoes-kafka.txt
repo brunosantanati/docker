@@ -1,0 +1,41 @@
+Exemplo baseado em:
+https://www.baeldung.com/ops/kafka-docker-setup
+
+### SUBIR O CONTAINER COM O KAFKA(E OUTRO COM O ZOOKEEPER)
+Comandos utilizados(rodar na pasta do docker-compose):
+docker-compose up -d
+nc -z localhost 22181
+nc -z localhost 29092
+docker-compose logs kafka | grep -i started
+
+### PARAR OS CONTAINERS SE PRECISAR
+docker-compose stop
+
+### ENTRAR NO CONTAINER DO KAFKA
+docker ps -a
+docker exec -it kafka_kafka_1 /bin/bash
+
+### CRIAR UM TOPIC NO KAFKA
+kafka-topics --create --bootstrap-server localhost:29092 --replication-factor 1 --partitions 1 --topic MY_TOPIC
+
+### CRIAR TOPICS PARA TESTAR UMA APLICAÇÃO KAFKA/JAVA
+Link da aplicação: https://github.com/brunosantanati/ecommerce (OBS: para subir essa aplicação e testar, é necessário mudar a porta do Kafka nos arquivos KafkaService.java e KafkaDispatcher.java para 29092)
+kafka-topics --create --bootstrap-server localhost:29092 --replication-factor 1 --partitions 1 --topic ECOMMERCE_NEW_ORDER
+kafka-topics --create --bootstrap-server localhost:29092 --replication-factor 1 --partitions 1 --topic ECOMMERCE_SEND_EMAIL
+
+### CONFIGURAR 3 PARTICOES(DEU ERRO)
+kafka-topics --alter --zookeeper localhost:22181 --topic ECOMMERCE_NEW_ORDER --partitions 3
+
+### LISTAR E DELETAR TOPIC SE PRECISAR
+kafka-topics --list --bootstrap-server localhost:29092
+kafka-topics --delete --bootstrap-server localhost:29092 --topic ECOMMERCE_NEW_ORDER
+kafka-topics --delete --bootstrap-server localhost:29092 --topic ECOMMERCE_SEND_EMAIL
+
+### ENVIAR MENSAGEM PARA O TOPIC
+kafka-console-producer --broker-list localhost:29092 --topic MY_TOPIC
+Após rodar o comando, digitar a mensagem e apertar enter. Cada linha é uma mensagem.
+
+### CONSUMIR MENSAGEM DO TOPIC
+kafka-console-consumer --bootstrap-server localhost:29092 --topic MY_TOPIC --from-beginning
+kafka-console-consumer --bootstrap-server localhost:29092 --topic ECOMMERCE_NEW_ORDER --from-beginning
+kafka-console-consumer --bootstrap-server localhost:29092 --topic ECOMMERCE_SEND_EMAIL --from-beginning

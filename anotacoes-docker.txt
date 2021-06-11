@@ -11,6 +11,9 @@ INTALL ON WINDOWS
 1-instalei o "Docker Desktop for Windows". Download em https://docs.docker.com/docker-for-windows/install/
 2-Depois tive que isntalar isso: https://aka.ms/wsl2kernel
 
+CONFIGURE THESE IN THE PATH (IF THE INSTALLER HAVEN'T DONE)
+C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin
+
 ### BASIC COMMANDS ###
 
 CHECK DOCKER VERSION

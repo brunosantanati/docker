@@ -14,6 +14,8 @@ docker-compose stop
 ### ENTRAR NO CONTAINER DO KAFKA
 docker ps -a
 docker exec -it kafka_kafka_1 /bin/bash
+OU
+winpty docker exec -it teste_kafka_1 bash
 
 ### CRIAR UM TOPIC NO KAFKA
 kafka-topics --create --bootstrap-server localhost:29092 --replication-factor 1 --partitions 1 --topic MY_TOPIC

@@ -1,3 +1,5 @@
+######## RODAR NA MESMA MÁQUINA ########
+
 1-Dentro de app2 rodar:
 mvn clean install
 
@@ -12,7 +14,29 @@ mvn clean install
 cd target/
 java -jar app1-0.0.1-SNAPSHOT.jar
 
-Links:
+######## RODAR NO MESMO CONTAINER MANUALMENTE ########
+
+docker run -it --name jdk8 openjdk:11
+/exit
+docker start jdk8
+docker exec -it jdk8 /bin/bash
+cd root/
+git clone https://github.com/brunosantanati/docker.git
+wget http://dlcdn.apache.org/maven/maven-3/3.8.3/binaries/apache-maven-3.8.3-bin.zip
+unzip apache-maven-3.8.3-bin.zip
+export PATH="$PATH:/root/apache-maven-3.8.3/bin"
+cd /root/docker/meus-exemplos/dois-apps-no-mesmo-container/app2
+mvn clean install
+cd target/
+java -jar app2-0.0.1-SNAPSHOT.jar &
+cd /root/docker/meus-exemplos/dois-apps-no-mesmo-container/app1
+mvn clean install
+cd target/
+java -jar app1-0.0.1-SNAPSHOT.jar
+
+######## LINKS ########
+
 https://hub.docker.com/r/java8ocr/java8-ocr
+https://hub.docker.com/_/openjdk
 https://www.baeldung.com/deployable-fat-jar-spring-boot
 

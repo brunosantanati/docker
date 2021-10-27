@@ -53,9 +53,21 @@ mvn clean install
 cd target/
 java -jar app1-0.0.1-SNAPSHOT.jar
 
+######## RODAR NO MESMO CONTAINER COM DOCKERFILE ########
+
+Ver Dockerfile e start.sh nesse mesmo diretório. Executar no diretório onde estão esses dois arquivos:
+
+docker build -t java-apps .
+docker run -it --name my-running-apps java-apps
+
+Para reconstruir e rodar novamente:
+docker rmi -f a394c9d45c94
+docker rm -f my-running-apps
+
 ######## LINKS ########
 
 https://hub.docker.com/r/java8ocr/java8-ocr
 https://hub.docker.com/_/openjdk
 https://www.baeldung.com/deployable-fat-jar-spring-boot
+https://docs.docker.com/engine/reference/builder/
 

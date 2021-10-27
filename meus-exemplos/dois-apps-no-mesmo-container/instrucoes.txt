@@ -60,6 +60,10 @@ Ver Dockerfile e start.sh nesse mesmo diretório. Executar no diretório onde es
 docker build -t java-apps .
 docker run -it -p 8081:8081 --name my-running-apps java-apps
 
+Na segunda vez que for rodar:
+docker start my-running-apps
+docker exec -it my-running-apps netstat -ano
+
 Para reconstruir e rodar novamente:
 docker rmi -f a394c9d45c94
 docker rm -f my-running-apps

@@ -1,0 +1,64 @@
+########### Arquivos
+
+data.json - No Mockoon(interface gráfica) importei um swagger e gerou a API mockada. Com o botão direito exportei esse arquivo data.json.
+teste.json - Gerei uma API mockada manualmente, sem swagger, dpois com o botão direito exportei esse arquivo teste.json.
+Dockerfile - Arquivo gerado automaticamente pelo comando mockoon-cli dockerize
+mockoon-api---amt-openbanking.json - Arquivo gerado automaticamente pelo comando mockoon-cli dockerize
+
+########### Instruções de como instalar e usar o mockoon-cli
+
+https://mockoon.com/tutorials/run-mock-api-anywhere-cli/
+
+########### Instalar e rodar localmente
+
+1-Instalar:
+sudo npm i -g @mockoon/cli
+
+2-Subir API mockada:
+mockoon-cli start --data ./data.json
+
+3-Testar API mockada:
+curl -X POST http://localhost:3002/open-banking/amt/execute/v1/perform
+
+4-Subir outra API mockada:
+mockoon-cli start --data ./teste.json
+
+5-Testar a outra API mockada:
+curl -X GET http://localhost:3001/teste
+
+6-Listar APIs mockadas no ar:
+mockoon-cli list
+
+7-Parar alguma API mockada(depois do comando pede para escolher qual API quer parar):
+mockoon-cli stop
+
+########### Dockerize (construir imagem)
+
+1-Gerar Dockerfile:
+mockoon-cli dockerize --data ./data.json --port 3002 --index 0 --output ./Dockerfile
+
+2-Buildar a imagem:
+docker build -t mockoon-api---amt-openbanking .
+
+3-Rodar a imagem:
+docker run -d -p 3002:3002 mockoon-api---amt-openbanking
+
+4-Testar a API mockada:
+curl -X POST http://localhost:3002/open-banking/amt/execute/v1/perform
+
+5-Parar o container:
+docker stop laughing_meitner
+
+########### Dockerize (usar imagem mockoon/cli)
+
+1-Rodar imagem(criar container):
+docker run -d --mount type=bind,source=/home/usuario/..resto-do-caminho-absoluto-aqui../data.json,target=/data,readonly -p 3002:3002 mockoon/cli:latest -d data -i 0 -p 3002
+
+Poderia ter usado a URL do arquivo também:
+docker run -d -p 3000:3000 mockoon/cli:latest -d https://raw.githubusercontent.com/mockoon/mock-samples/main/samples/generate-mock-data.json -i 0 -p 3000
+
+2-Testar a API mockada
+curl -X POST http://localhost:3002/open-banking/amt/execute/v1/perform
+
+3-Parar o container:
+docker stop jolly_nobel

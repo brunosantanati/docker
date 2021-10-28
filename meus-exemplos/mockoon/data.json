@@ -1,0 +1,227 @@
+{
+    "source": "mockoon:1.14.1",
+    "data": [
+        {
+            "type": "environment",
+            "item": {
+                "uuid": "",
+                "lastMigration": 15,
+                "name": "API - AMT OpenBanking",
+                "endpointPrefix": "open-banking/amt/execute/v1",
+                "latency": 0,
+                "port": 3002,
+                "routes": [
+                    {
+                        "uuid": "",
+                        "documentation": "Executa o enriquecimento",
+                        "method": "post",
+                        "endpoint": "perform",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"valor\": 109\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "Este status code indica que a requisição foi bem sucedida.",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"errors\": [\n    {\n      \"message\": \"\"\n    }\n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 400,
+                                "label": "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json; charset=utf-8"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"errors\": [\n    {\n      \"message\": \"\"\n    }\n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 401,
+                                "label": "Cabeçalho de autenticação ausente/inválido ou token inválido.",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json; charset=utf-8"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"errors\": [\n    {\n      \"message\": \"\"\n    }\n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 403,
+                                "label": "O token tem escopo incorreto ou uma política de segurança foi violada.",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json; charset=utf-8"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"errors\": [\n    {\n      \"message\": \"\"\n    }\n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 404,
+                                "label": "O recurso solicitado não existe ou não foi implementado",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json; charset=utf-8"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"errors\": [\n    {\n      \"message\": \"\"\n    }\n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 405,
+                                "label": "O consumidor tentou acessar o recurso com um método não suportado",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json; charset=utf-8"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"errors\": [\n    {\n      \"message\": \"\"\n    }\n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 406,
+                                "label": "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json; charset=utf-8"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"errors\": [\n    {\n      \"message\": \"\"\n    }\n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 429,
+                                "label": "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json; charset=utf-8"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"errors\": [\n    {\n      \"message\": \"\"\n    }\n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 500,
+                                "label": "Ocorreu um erro no gateway da API ou no microsserviço",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json; charset=utf-8"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"valor\": 845\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "Este status code indica que a requisição foi bem sucedida.",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    }
+                ],
+                "proxyMode": false,
+                "proxyHost": "",
+                "proxyRemovePrefix": false,
+                "https": false,
+                "cors": true,
+                "headers": [],
+                "proxyReqHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ],
+                "proxyResHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ]
+            }
+        }
+    ]
+}
